@@ -1,0 +1,391 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────────────────────────────
+   GOOGLE FONTS (loaded via Next.js font system)
+─────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* ── Shadcn token mapping ── */
+    --background: 240 50% 4%;
+    --foreground: 220 20% 94%;
+
+    --card: 240 40% 7%;
+    --card-foreground: 220 20% 94%;
+
+    --popover: 240 40% 7%;
+    --popover-foreground: 220 20% 94%;
+
+    --primary: 185 95% 55%;
+    --primary-foreground: 240 50% 4%;
+
+    --secondary: 240 30% 11%;
+    --secondary-foreground: 220 20% 80%;
+
+    --muted: 240 25% 14%;
+    --muted-foreground: 240 10% 55%;
+
+    --accent: 280 85% 65%;
+    --accent-foreground: 240 50% 4%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 220 20% 96%;
+
+    --border: 240 25% 18%;
+    --input: 240 30% 9%;
+    --ring: 185 95% 55%;
+
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--accent));
+    --chart-3: 210 80% 68%;
+    --chart-4: 280 70% 60%;
+    --chart-5: 340 85% 72%;
+
+    --radius: 0.6rem;
+
+    /* ── Custom semantic tokens ── */
+    --text-primary: hsl(var(--foreground));
+    --text-secondary: hsl(var(--muted-foreground));
+    --bg-primary: hsl(var(--background));
+    --bg-secondary: hsl(var(--secondary));
+    --highlight-primary: hsl(var(--primary));
+    --highlight-secondary: hsl(var(--accent));
+
+    /* ── Glow colors ── */
+    --glow-cyan: 0 0 40px rgba(0, 229, 255, 0.25);
+    --glow-purple: 0 0 40px rgba(176, 38, 255, 0.25);
+    --glow-pink: 0 0 40px rgba(255, 60, 172, 0.25);
+  }
+}
+
+/* ── Base styles ── */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    background-color: hsl(240, 50%, 4%);
+    /* Deep space nebula gradient background */
+    background-image:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0, 229, 255, 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(176, 38, 255, 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255, 60, 172, 0.04) 0%, transparent 70%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+  }
+
+  code, pre, kbd, samp {
+    font-family: var(--font-roboto-mono), 'Fira Code', monospace;
+  }
+
+  /* ── Selection ── */
+  ::selection {
+    background: rgba(0, 229, 255, 0.25);
+    color: #fff;
+  }
+
+  /* ── Custom Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: hsl(240, 50%, 4%); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(0,229,255,0.5), rgba(176,38,255,0.5));
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(0,229,255,0.8), rgba(176,38,255,0.8));
+  }
+  * { scrollbar-width: thin; scrollbar-color: rgba(0,229,255,0.4) transparent; }
+}
+
+/* ═══════════════════════════════════════════
+   GRADIENT TEXT UTILITIES
+═══════════════════════════════════════════ */
+@layer utilities {
+  .gradient-text-cyan-purple {
+    @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent;
+  }
+  .gradient-text-cyan-pink {
+    @apply bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent;
+  }
+  .gradient-text-gold {
+    @apply bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent;
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Glow effects */
+  .glow-cyan  { box-shadow: 0 0 30px rgba(0, 229, 255, 0.2); }
+  .glow-purple { box-shadow: 0 0 30px rgba(176, 38, 255, 0.2); }
+  .glow-pink  { box-shadow: 0 0 30px rgba(255, 60, 172, 0.2); }
+
+  /* Neon text */
+  .neon-cyan {
+    text-shadow: 0 0 10px rgba(0,229,255,0.6), 0 0 30px rgba(0,229,255,0.3);
+  }
+  .neon-purple {
+    text-shadow: 0 0 10px rgba(176,38,255,0.6), 0 0 30px rgba(176,38,255,0.3);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATED BORDER (multicolor)
+═══════════════════════════════════════════ */
+@keyframes rotate-border {
+  0%   { --border-angle: 0turn; }
+  100% { --border-angle: 1turn; }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0turn;
+  inherits: false;
+}
+
+.multicolor-border {
+  border: 1.5px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.multicolor-border::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    hsl(185, 95%, 55%) 0%,
+    hsl(280, 85%, 65%) 25%,
+    hsl(340, 85%, 72%) 50%,
+    hsl(210, 80%, 68%) 75%,
+    hsl(185, 95%, 55%) 100%
+  );
+  animation: rotate-border 4s linear infinite;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 1.5px;
+}
+
+/* ═══════════════════════════════════════════
+   WAVING HAND ANIMATION
+═══════════════════════════════════════════ */
+@keyframes wave-animation {
+  0%   { transform: rotate(  0deg) }
+  10%  { transform: rotate( 14deg) }
+  20%  { transform: rotate( -8deg) }
+  30%  { transform: rotate( 14deg) }
+  40%  { transform: rotate( -4deg) }
+  50%  { transform: rotate( 10deg) }
+  60%  { transform: rotate(  0deg) }
+  100% { transform: rotate(  0deg) }
+}
+
+.animate-wave {
+  display: inline-block;
+  animation: wave-animation 2.5s infinite;
+  transform-origin: 70% 70%;
+}
+
+/* ═══════════════════════════════════════════
+   TYPEWRITER CURSOR
+═══════════════════════════════════════════ */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink-cursor 1s step-start infinite;
+}
+
+/* ═══════════════════════════════════════════
+   FLOATING ANIMATION
+═══════════════════════════════════════════ */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float-y 4s ease-in-out infinite;
+}
+
+@keyframes float-y-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-8px) rotate(2deg); }
+}
+
+.animate-float-slow {
+  animation: float-y-slow 6s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════
+   SHIMMER
+═══════════════════════════════════════════ */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    rgba(0,229,255,0.8) 0%,
+    rgba(255,255,255,1) 40%,
+    rgba(0,229,255,0.8) 80%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ═══════════════════════════════════════════
+   GRADIENT PULSE BACKGROUND
+═══════════════════════════════════════════ */
+@keyframes gradient-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: gradient-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   SKILL BAR
+═══════════════════════════════════════════ */
+@keyframes skill-fill {
+  from { width: 0%; }
+  to   { width: var(--skill-width); }
+}
+
+.skill-bar-fill {
+  animation: skill-fill 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ═══════════════════════════════════════════
+   GRID BACKGROUND PATTERN
+═══════════════════════════════════════════ */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ═══════════════════════════════════════════
+   STAT COUNTER CARD
+═══════════════════════════════════════════ */
+.stat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,229,255,0.1);
+}
+
+/* ═══════════════════════════════════════════
+   TECH PILL HOVER
+═══════════════════════════════════════════ */
+.tech-pill {
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 99px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.78rem;
+  color: rgba(180, 240, 255, 0.8);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tech-pill:hover {
+  background: rgba(0, 229, 255, 0.15);
+  border-color: rgba(0, 229, 255, 0.4);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(0,229,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════
+   PROJECT CARD OVERLAY
+═══════════════════════════════════════════ */
+.project-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(3, 2, 14, 0.95) 0%,
+    rgba(3, 2, 14, 0.6) 50%,
+    transparent 100%
+  );
+}
+
+/* ═══════════════════════════════════════════
+   APPLY MULTICOLOR BORDER ON ACTIVE (legacy)
+═══════════════════════════════════════════ */
+.apply-multicolor-border-on-active {
+  border: 1.5px solid transparent;
+}
+.apply-multicolor-background-on-active:active {
+  background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(176,38,255,0.15));
+}
+
+/* ═══════════════════════════════════════════
+   ACCORDION ANIMATIONS (shadcn)
+═══════════════════════════════════════════ */
+@keyframes accordion-down {
+  from { height: 0 }
+  to   { height: var(--radix-accordion-content-height) }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height) }
+  to   { height: 0 }
+}
+
+/* ═══════════════════════════════════════════
+   3D UTILITIES FOR FRAMER MOTION
+═══════════════════════════════════════════ */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-2000 {
+  perspective: 2000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
