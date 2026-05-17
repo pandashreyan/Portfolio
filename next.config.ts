@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  turbopack: {},
   webpack: (config, { isServer }) => {
     // Ignore optional OpenTelemetry Jaeger exporter missing from Genkit packages
     config.resolve.fallback = {
