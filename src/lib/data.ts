@@ -55,18 +55,18 @@ export const TECHNICAL_SKILLS: SkillCategory[] = [
 
 export const EXPERIENCES = [
   {
-    year: "2023 - Present",
-    role: "Web Developer Lead",
-    company: "Self-Employed/Freelance",
-    description: `Led a team in developing and maintaining web applications using JavaScript, React.js, and Node.js. Implemented RESTful APIs and integrated with MongoDB databases. Collaborated with stakeholders to define project requirements and timelines.`,
-    technologies: ["Javascript", "React.js", "Next.js", "MongoDB"],
+    year: "2024 - Present",
+    role: "Open Source Contributor",
+    company: "GitHub",
+    description: `Actively contributing to various open-source projects, focusing on full-stack web development and AI/ML tools. Collaborating with developers worldwide to improve codebase and add new features.`,
+    technologies: ["React.js", "Next.js", "Python", "TypeScript"],
   },
   {
-    year: "2021 - 2022",
-    role: "Frontend Developer",
-    company: "Hypothetical Corp",
-    description: `Designed and developed user interfaces for web applications using Next.js and React. Worked closely with backend developers to integrate frontend components with Node.js APIs. Implemented responsive designs and optimized frontend performance.`,
-    technologies: ["HTML", "CSS", "React.js", "MySQL"],
+    year: "2022 - 2026",
+    role: "B.Tech Student",
+    company: "KIIT University",
+    description: `Pursuing a degree in Computer Science. Gaining strong foundational knowledge in algorithms, data structures, and software engineering principles while building practical projects.`,
+    technologies: ["C++", "Java", "Data Structures", "Algorithms"],
   },
 ];
 

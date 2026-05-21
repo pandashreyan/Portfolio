@@ -233,7 +233,7 @@ export default function HomePage() {
             { label: "Projects Built", value: PROJECTS.length + "+", icon: Code2, color: "text-cyan-400" },
             { label: "Awards & Honors", value: ACHIEVEMENTS.length, icon: Sparkles, color: "text-yellow-400" },
             { label: "Tech Stack", value: allSkills.length + "+", icon: Cpu, color: "text-purple-400" },
-            { label: "Experience", value: "3+ Yrs", icon: Globe2, color: "text-green-400" },
+            { label: "Experience", value: "Fresher", icon: Globe2, color: "text-green-400" },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}
